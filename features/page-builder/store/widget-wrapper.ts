@@ -75,9 +75,6 @@ export const widgetWrapperStore = createStore<WidgetWrapperStore>()(
     handleChangeParent: (newParentId?: string) =>
       set((state) => {
         const { draggedWidget, widgets } = state;
-
-        console.log("Handle change parent");
-
         const draggedWidgetId = draggedWidget?.id;
 
         if (draggedWidget && draggedWidgetId !== newParentId) {

@@ -1,5 +1,5 @@
 import Navbar from "@/features/page-builder/components/navbar";
-import WidgetList from "@/features/page-builder/components/widget-list";
+import Sidebar from "@/features/page-builder/components/sidebar";
 
 export default function EditorLayout({
   children,
@@ -11,7 +11,7 @@ export default function EditorLayout({
       <Navbar />
       <div className="flex">
         {children}
-        <WidgetList />
+        <Sidebar />
       </div>
     </div>
   );

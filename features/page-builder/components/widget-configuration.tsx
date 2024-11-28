@@ -4,11 +4,13 @@ import { XCircleIcon } from "lucide-react";
 import * as React from "react";
 
 import { CardConfiguration } from "@/features/page-builder/components/ui/card-configuration";
+import { LabelConfiguration } from "@/features/page-builder/components/ui/label-configuration";
 import { widgetWrapperStore } from "@/features/page-builder/store/widget-wrapper";
 import { TWidget } from "@/features/page-builder/types";
 
 const widgetConfig: Record<string, React.ReactNode> = {
   Card: <CardConfiguration />,
+  Label: <LabelConfiguration />,
 };
 
 const WidgetConfiguration = ({ widget }: { widget: TWidget }) => {

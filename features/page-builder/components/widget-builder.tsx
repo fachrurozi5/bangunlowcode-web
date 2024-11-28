@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { widgetWrapperStore } from "@/features/page-builder/store/widget-wrapper";
 import { TWidget } from "@/features/page-builder/types";
 
@@ -28,13 +29,23 @@ const WidgetBuilder = ({ widgets, parentId }: Props) => {
     switch (name) {
       case "Input":
         return <Input {...props} />;
+      case "Label":
+        return (
+          <Label className="inline-block" style={style}>
+            {props.text ?? "Text"}
+          </Label>
+        );
       case "Card":
         return (
           <Card style={style}>
-            <CardHeader>
-              <CardTitle>{props["title"]}</CardTitle>
-              <CardDescription>{props["desc"]}</CardDescription>
-            </CardHeader>
+            {(props["title"] || props["desc"]) && (
+              <CardHeader>
+                {props["title"] && <CardTitle>{props["title"]}</CardTitle>}
+                {props["desc"] && (
+                  <CardDescription>{props["desc"]}</CardDescription>
+                )}
+              </CardHeader>
+            )}
             <CardContent>
               <WidgetBuilder widgets={widgets} parentId={id} />
             </CardContent>
@@ -42,7 +53,7 @@ const WidgetBuilder = ({ widgets, parentId }: Props) => {
         );
       case "Stack":
         return (
-          <div className="flex flex-row items-center justify-around px-2 py-3">
+          <div className="flex flex-row items-center px-2 py-3">
             <WidgetBuilder widgets={widgets} parentId={id} />
           </div>
         );
